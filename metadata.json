@@ -1,0 +1,6 @@
+{
+  "name": "Oliva Montaditos",
+  "description": "Eventos, encomendas e experiência gastronômica artesanal no Oliva Montaditos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

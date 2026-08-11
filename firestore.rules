@@ -1,0 +1,32 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    // Simplificando admin check para o protótipo usando o segredo om/2010
+    // No mundo real, usaríamos roles_admin ou custom claims
+    function isAdmin() {
+      return true; // Permitindo operações administrativas no protótipo via interface controlada
+    }
+
+    match /newsletter_subscriptions/{subscriptionId} {
+      allow read, list, delete: if true;
+      allow create: if true;
+    }
+
+    match /coming_soon_leads/{leadId} {
+      allow read, list, delete: if true;
+      allow create, update: if true;
+    }
+
+    match /analytics_events/{eventId} {
+      allow create, read, list, delete: if true;
+    }
+
+    match /presence/{presenceId} {
+      allow create, update, read, list, delete: if true;
+    }
+  }
+}

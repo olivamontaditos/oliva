@@ -1,0 +1,80 @@
+
+{
+  "entities": {
+    "NewsletterSubscription": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "NewsletterSubscription",
+      "type": "object",
+      "description": "Represents a user's subscription to the restaurant's newsletter.",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "subscriptionDate": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "subscriptionDate"]
+    },
+    "ComingSoonLead": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ComingSoonLead",
+      "type": "object",
+      "description": "Represents a lead captured from the site.",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "whatsapp": { "type": "string" },
+        "birthDate": { "type": "string", "format": "date" },
+        "rating": { "type": "number", "minimum": 0, "maximum": 5 },
+        "notes": { "type": "string" },
+        "submissionDate": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "submissionDate"]
+    },
+    "AnalyticsEvent": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AnalyticsEvent",
+      "type": "object",
+      "description": "Logs user interactions like page views and button clicks.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["page_view", "whatsapp_click", "ifood_click", "newsletter_submit", "address_click", "instagram_click", "tiktok_click", "youtube_click", "review_click", "events_click"]
+        },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["type", "timestamp"]
+    },
+    "UserPresence": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserPresence",
+      "type": "object",
+      "description": "Track active users in real-time.",
+      "properties": {
+        "lastSeen": { "type": "string", "format": "date-time" }
+      },
+      "required": ["lastSeen"]
+    }
+  },
+  "auth": {
+    "providers": ["password", "anonymous"]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/newsletter_subscriptions/{subscriptionId}",
+        "definition": { "entityName": "NewsletterSubscription" }
+      },
+      {
+        "path": "/coming_soon_leads/{leadId}",
+        "definition": { "entityName": "ComingSoonLead" }
+      },
+      {
+        "path": "/analytics_events/{eventId}",
+        "definition": { "entityName": "AnalyticsEvent" }
+      },
+      {
+        "path": "/presence/{presenceId}",
+        "definition": { "entityName": "UserPresence" }
+      }
+    ]
+  }
+}

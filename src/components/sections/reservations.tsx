@@ -60,7 +60,7 @@ export default function ReservationsSection() {
               Horário de Funcionamento
             </h4>
             <div className="mt-4 text-muted-foreground space-y-2">
-                <p><strong>Segunda a Sábado:</strong> 12:00 – 20:00</p>
+                <p><strong>Segunda a Sábado:</strong> 12:00 – 21:00</p>
                 <p><strong>Domingo:</strong> Fechado</p>
             </div>
             <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">

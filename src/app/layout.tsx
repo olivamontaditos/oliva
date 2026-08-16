@@ -1,6 +1,5 @@
 
 import type { Metadata } from "next";
-import { Inter, Alegreya } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
@@ -9,17 +8,6 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import IfoodPopup from "@/components/ifood-popup";
 import WhatsappButton from "@/components/whatsapp-button";
-
-const fontBody = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-});
-
-const fontHeadline = Alegreya({
-  subsets: ["latin"],
-  variable: "--font-headline",
-  weight: ["400", "700"],
-});
 
 export const metadata: Metadata = {
   title: "OLIVA MONTADITOS – Eventos, Encomendas & Experiência Gastronômica",
@@ -36,9 +24,7 @@ export default function RootLayout({
     <html lang="pt-BR" className="dark">
       <body
         className={cn(
-          "min-h-screen font-body antialiased",
-          fontBody.variable,
-          fontHeadline.variable
+          "min-h-screen font-body antialiased"
         )}
       >
         <FirebaseClientProvider>

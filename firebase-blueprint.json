@@ -1,0 +1,108 @@
+{
+  "entities": {
+    "NewsletterSubscription": {
+      "title": "NewsletterSubscription",
+      "description": "Newsletter email subscription record",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Subscriber email address"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of subscription"
+        }
+      },
+      "required": ["email"]
+    },
+    "ComingSoonLead": {
+      "title": "ComingSoonLead",
+      "description": "Lead registered for updates and offers",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Lead name"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Lead email"
+        },
+        "whatsapp": {
+          "type": "string",
+          "description": "WhatsApp contact number"
+        },
+        "birthDate": {
+          "type": "string",
+          "description": "Birth date"
+        },
+        "submissionDate": {
+          "type": "string",
+          "description": "Timestamp of submission"
+        },
+        "rating": {
+          "type": "number",
+          "description": "User satisfaction rating"
+        },
+        "comment": {
+          "type": "string",
+          "description": "User feedback comment"
+        }
+      },
+      "required": ["name"]
+    },
+    "AnalyticsEvent": {
+      "title": "AnalyticsEvent",
+      "description": "Tracking event for visitor actions",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Event type identifier"
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "Timestamp of event"
+        }
+      },
+      "required": ["type"]
+    },
+    "Presence": {
+      "title": "Presence",
+      "description": "Real-time user presence heartbeat",
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "description": "Session identifier"
+        },
+        "lastSeen": {
+          "type": "string",
+          "description": "Timestamp of last heartbeat"
+        }
+      },
+      "required": ["sessionId", "lastSeen"]
+    }
+  },
+  "firestore": {
+    "/newsletter_subscriptions/{subscriptionId}": {
+      "schema": "NewsletterSubscription",
+      "description": "Newsletter subscriptions"
+    },
+    "/coming_soon_leads/{leadId}": {
+      "schema": "ComingSoonLead",
+      "description": "Leads and contact inquiries"
+    },
+    "/analytics_events/{eventId}": {
+      "schema": "AnalyticsEvent",
+      "description": "Analytics tracking events"
+    },
+    "/presence/{presenceId}": {
+      "schema": "Presence",
+      "description": "Real-time visitor presence records"
+    }
+  }
+}
